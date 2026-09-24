@@ -22,3 +22,23 @@ print(get_category_performance(df))
 
 print("\nChannel Performance:")
 print(get_channel_performance(df))
+
+
+from metrics import (
+    get_profit_margin,
+    get_average_order_revenue,
+    get_monthly_performance,
+    get_top_products,
+)
+
+print("\nOverall Profit Margin:")
+print(f"{get_profit_margin(df):.2f}%")
+
+print("\nAverage Order Revenue:")
+print(f"₹{get_average_order_revenue(df):,.2f}")
+
+print("\nMonthly Performance:")
+print(get_monthly_performance(df))
+
+print("\nTop 10 Products:")
+print(get_top_products(df))
