@@ -6,39 +6,70 @@ from metrics import (
     get_region_performance,
     get_category_performance,
     get_channel_performance,
-)
-
-df = load_data()
-
-print("Total Revenue:", get_total_revenue(df))
-print("Total Profit:", get_total_profit(df))
-print("Total Quantity:", get_total_quantity(df))
-
-print("\nRegion Performance:")
-print(get_region_performance(df))
-
-print("\nCategory Performance:")
-print(get_category_performance(df))
-
-print("\nChannel Performance:")
-print(get_channel_performance(df))
-
-
-from metrics import (
     get_profit_margin,
     get_average_order_revenue,
     get_monthly_performance,
     get_top_products,
 )
 
-print("\nOverall Profit Margin:")
-print(f"{get_profit_margin(df):.2f}%")
 
-print("\nAverage Order Revenue:")
-print(f"₹{get_average_order_revenue(df):,.2f}")
+def test_load_data():
+    df = load_data()
+    assert not df.empty
 
-print("\nMonthly Performance:")
-print(get_monthly_performance(df))
 
-print("\nTop 10 Products:")
-print(get_top_products(df))
+def test_total_revenue():
+    df = load_data()
+    assert get_total_revenue(df) > 0
+
+
+def test_total_profit():
+    df = load_data()
+    assert get_total_profit(df) > 0
+
+
+def test_total_quantity():
+    df = load_data()
+    assert get_total_quantity(df) > 0
+
+
+def test_region_performance():
+    df = load_data()
+    result = get_region_performance(df)
+    assert not result.empty
+
+
+def test_category_performance():
+    df = load_data()
+    result = get_category_performance(df)
+    assert not result.empty
+
+
+def test_channel_performance():
+    df = load_data()
+    result = get_channel_performance(df)
+    assert not result.empty
+
+
+def test_profit_margin():
+    df = load_data()
+    result = get_profit_margin(df)
+    assert result >= 0
+
+
+def test_average_order_revenue():
+    df = load_data()
+    result = get_average_order_revenue(df)
+    assert result > 0
+
+
+def test_monthly_performance():
+    df = load_data()
+    result = get_monthly_performance(df)
+    assert not result.empty
+
+
+def test_top_products():
+    df = load_data()
+    result = get_top_products(df)
+    assert not result.empty
